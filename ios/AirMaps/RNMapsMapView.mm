@@ -74,7 +74,9 @@ using namespace facebook::react;
     MKMapCamera *camera = [RCTConvert MKMapCameraWithDefaults:cameraDic existingCamera:[_view camera]];
     // don't emit region change events when we are setting the camera
     _view.ignoreRegionChanges = YES;
-    [_view setCamera:camera animated:YES];
+    [UIView animateWithDuration:(duration / 1000.0) animations:^{
+        [self->_view setCamera:camera animated:YES];
+    }];
 }
 
 - (void)fitToElements:(NSString *)edgePaddingJSON animated:(BOOL)animated {
